@@ -14,6 +14,8 @@ const initialState = {
   pokemon: undefined,
   pokemonDetail: {},
   pokemonFilter: [],
+  pokemonesBD: [],
+  pokemonesOriginales: [],
   types: [],
 };
 
@@ -23,7 +25,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         allPokemons: action.payload,
-        // pokemonBackUp: action.payload,
       };
 
     case GET_POKEMON_BY_NAME:
@@ -40,9 +41,9 @@ function rootReducer(state = initialState, action) {
     case FILTER_POKEMONS:
       return {
         ...state,
-        pokemonFilter: state.allPokemons.filter((poke) =>
-          poke.types.includes(action.payload)
-        ),
+        pokemonFilter: state.allPokemons.filter((poke) => {
+          return poke.types.some((t) => t.name === action.payload);
+        }),
       };
 
     case GET_TYPES:

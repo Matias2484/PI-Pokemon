@@ -61,37 +61,37 @@ export default function NavBar() {
         </ul>
 
         {/* Filtrar por tipo */}
-        <div className="select">
-          <select id="botonFiltrado" onChange={typesFilter}>
+        <div className="filtro">
+          <select id="filtrado" onChange={typesFilter}>
             <option defaultValue>Fitrar por tipo... </option>
-            <option className="Normal" value="Normal">
+            <option className="Normal" value="normal">
               Normal
             </option>
-            <option className="Flying" value="Flying">
+            <option className="Flying" value="flying">
               Flying
             </option>
-            <option className="Poison" value="Poison">
+            <option className="Poison" value="poison">
               Poison
             </option>
-            <option className="Ground" value="Ground">
+            <option className="Ground" value="ground">
               Ground
             </option>
-            <option className="Bug" value="Bug">
+            <option className="Bug" value="bug">
               Bug
             </option>
-            <option className="Fire" value="Fire">
+            <option className="Fire" value="fire">
               Fire
             </option>
-            <option className="Water" value="Water">
+            <option className="Water" value="water">
               Water
             </option>
-            <option className="Grass" value="Grass">
+            <option className="Grass" value="grass">
               Grass
             </option>
-            <option className="Electric" value="Electric">
+            <option className="Electric" value="electric">
               Electric
             </option>
-            <option className="Fairy" value="Fairy">
+            <option className="Fairy" value="fairy">
               Fairy
             </option>
           </select>

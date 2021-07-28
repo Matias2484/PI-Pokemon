@@ -9,6 +9,9 @@ export default function Home() {
   const dispatch = useDispatch();
   let allPokemons = useSelector((state) => state.allPokemons);
   let pokemonFilter = useSelector((state) => state.pokemonFilter);
+  // let pokemonesBD = useSelector((state) => state.pokemonesBD);
+  // let pokemonesOriginales = useSelector((state) => state.pokemonesOriginales);
+
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -16,16 +19,10 @@ export default function Home() {
     dispatch(filterPokemons());
   }, [dispatch]);
 
-  //Filtado por BD
-  // let allPokemonsNotBD = allPokemons.filter((e) => !e.id);
-  // console.log(allPokemonsNotBD);
-  // let allPokemonsBD = allPokemons.filter((e) => e.id);
-  // console.log(allPokemonsBD);
-
   //Paginado de a 12
 
   const [currentPage, setCurrentPage] = useState(0);
-  const pokemonsIniciales = allPokemons.slice(currentPage, currentPage + 12);
+  var pokemonsIniciales = allPokemons.slice(currentPage, currentPage + 12);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 12);
@@ -33,6 +30,17 @@ export default function Home() {
   const prevPage = () => {
     if (currentPage > 0) setCurrentPage(currentPage - 12);
   };
+
+  //Filtado por BD
+  const filterBD = (e) => {
+    setState({ ...state, [e.target.id]: e.target.value });
+  };
+  if (state.select === "originales") {
+    pokemonsIniciales = allPokemons.filter((e) => !e.id);
+  }
+  if (state.select === "bd") {
+    pokemonsIniciales = allPokemons.filter((e) => e.id);
+  }
 
   //Ordenado
 
@@ -97,7 +105,9 @@ export default function Home() {
               id={index + 1}
               tipos={e.types.map((type) => (
                 <div>
-                  <p>{type}</p>
+                  <p>
+                    {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
+                  </p>
                 </div>
               ))}
             />
@@ -136,7 +146,18 @@ export default function Home() {
               </button>
             ) : null}
           </div>
-
+          {/* Filtar por Pokemones Originales o BD */}
+          <div className="select">
+            <select id="select" onChange={filterBD}>
+              <option defaultValue>Filtrar por... </option>
+              <option id="originales" value="originales">
+                Pokemones Originales
+              </option>
+              <option id="bd" value="bd">
+                bd
+              </option>
+            </select>
+          </div>
           <div className="pokemons">
             {pokemonsIniciales.map((e, index) => (
               <Pokemon
@@ -150,7 +171,10 @@ export default function Home() {
                   ) : (
                     e.types.map((type) => (
                       <div>
-                        <p>{type}</p>
+                        <p>
+                          {type.name.charAt(0).toUpperCase() +
+                            type.name.slice(1)}
+                        </p>
                       </div>
                     ))
                   )

@@ -13,7 +13,7 @@ export default function Form() {
 
   const [form, setForm] = useState({
     nombre: "",
-    imagen: "",
+    img: "",
     vida: "",
     fuerza: "",
     defensa: "",
@@ -32,7 +32,7 @@ export default function Form() {
   function stateReset() {
     setForm({
       nombre: "",
-      imagen: "",
+      img: "",
       vida: "",
       fuerza: "",
       defensa: "",
@@ -51,7 +51,7 @@ export default function Form() {
     if (!form.nombre) {
       errors.nombre = "Nombre es requerido";
     }
-    if (!validateUrl.test(form.imagen)) {
+    if (!validateUrl.test(form.img)) {
       errors.imagen = "Deber ser una URL válida";
     }
     if (!validateNum.test(form.vida)) {
@@ -93,7 +93,7 @@ export default function Form() {
   function handleSubmit(e) {
     e.preventDefault();
     if (
-      !errors.nombre & !errors.imagen &&
+      !errors.nombre & !errors.img &&
       !errors.vida &&
       !errors.fuerza &&
       !errors.defensa &&
@@ -140,12 +140,12 @@ export default function Form() {
             <label className="imagenTexto">Imagen</label>
             <input
               type="text"
-              className={errors.imagen && "warning"}
-              value={form.imagen}
-              name="imagen"
+              className={errors.img && "warning"}
+              value={form.img}
+              name="img"
               onChange={handleChange}
             />
-            {errors.nombre && <p className="warning">{errors.imagen}</p>}
+            {errors.nombre && <p className="warning">{errors.img}</p>}
           </div>
           <div className="form_Vida">
             <label className="vidaTexto">Vida</label>

@@ -3,7 +3,6 @@
   padding: 1rem;
   background: linear-gradient(
     90deg,
-    rgba(101, 17, 25, 1) 0%,
     rgba(11, 11, 20, 1) 1%,
     rgba(20, 70, 19, 1) 100%
   );
@@ -27,7 +26,7 @@
   margin-left: 3rem;
 }
 .link_crear:hover {
-  background-color: e;
+  box-shadow: 0 0 8px white;
 }
 
 .btn_search {
@@ -36,6 +35,8 @@
 }
 .btn_search:hover {
   box-shadow: 0 0 8px white;
+  background: transparent;
+  color: white;
 }
 .btn_search input {
   padding: 8px;

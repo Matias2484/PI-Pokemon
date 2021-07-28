@@ -27,17 +27,9 @@ router.get("/", async (req, res) => {
           nombre: res.name,
           img: res.sprites.other.dream_world.front_default,
           ataque: res.stats[1].base_stat,
-          types: [],
+          types: res.types.map((t) => t.type),
         };
-        res.types.forEach((type) => {
-          for (const key in type) {
-            if (key === "type") {
-              obj.types.push(
-                type[key].name.charAt(0).toUpperCase() + type[key].name.slice(1)
-              );
-            }
-          }
-        });
+
         return obj;
       });
 
@@ -131,26 +123,18 @@ router.get("/:idPokemon", async (req, res) => {
 });
 //Ruta de Creación de Pokemones
 router.post("/", async (req, res) => {
-  const {
-    nombre,
-    imagen,
-    vida,
-    fuerza,
-    defensa,
-    velocidad,
-    altura,
-    peso,
-    types,
-  } = req.body;
+  const { nombre, img, vida, fuerza, defensa, velocidad, altura, peso, types } =
+    req.body;
 
   try {
     const tiposMap = [];
-    types.map((e) => tiposMap.push({ nombre: e }));
+
+    types.map((e) => tiposMap.push({ name: e }));
 
     await Pokemon.create(
       {
         nombre: nombre,
-        imagen: imagen,
+        img: img,
         vida: vida,
         fuerza: fuerza,
         defensa: defensa,

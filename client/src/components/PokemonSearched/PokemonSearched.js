@@ -21,7 +21,7 @@ export default function PokemonSearched() {
             <p>Defensa: {pokemonSearched.defensa}</p>
             <p>Velocidad: {pokemonSearched.velocidad}</p>
           </div>
-          <div className="tipos">
+          <div className="tipos_Poke">
             Tipos:
             {pokemonSearched.types.map(
               (e) => e.type.name.charAt(0).toUpperCase() + e.type.name.slice(1)

@@ -11,9 +11,8 @@ router.get("/", async (req, res) => {
       .then((data) => {
         let tipos = [];
         for (let i = 0; i < data.results.length; i++) {
-          var tipo =
-            data.results[i].name.charAt(0).toUpperCase() +
-            data.results[i].name.slice(1);
+          var tipo = data.results[i].name;
+
           tipos.push(tipo);
         }
         tipos.map(async (r) => {

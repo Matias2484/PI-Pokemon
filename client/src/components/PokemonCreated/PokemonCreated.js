@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPokemons } from "../../actions/actions";
+import "./PokemonCreated.css";
 
 export default function PokemonCreated() {
   let allPokemons = useSelector((state) => state.allPokemons);
@@ -25,7 +26,7 @@ export default function PokemonCreated() {
         <div className="poke_Detail">
           <div className="detalles">
             <p className="poke_nombre">{poke.nombre}</p>
-            <img className="poke_img" src={poke.imagen} alt={poke.nombre}></img>
+            <img className="poke_img" src={poke.img} alt={poke.nombre}></img>
             <div className="poke_estadisticas">
               <p>Vida: {poke.vida}</p>
               <p>Fuerza: {poke.fuerza}</p>
@@ -35,7 +36,11 @@ export default function PokemonCreated() {
               <p>Altura: {poke.altura}</p>
               <p className="tipos_Poke">
                 Tipos:
-                {poke.types.map((e) => e.nombre)}
+                <span className="nombre_tipos">
+                  {poke.types.map(
+                    (e) => e.name.charAt(0).toUpperCase() + e.name.slice(1)
+                  )}
+                </span>
               </p>
             </div>
           </div>
@@ -43,6 +48,6 @@ export default function PokemonCreated() {
       );
     });
   } else {
-    return <h1>No existe el Pokemon buscado</h1>;
+    return <h1>Cargando</h1>;
   }
 }
