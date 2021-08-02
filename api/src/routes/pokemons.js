@@ -28,6 +28,7 @@ router.get("/", async (req, res) => {
           img: res.sprites.other.dream_world.front_default,
           ataque: res.stats[1].base_stat,
           types: res.types.map((t) => t.type),
+          id: res.id,
         };
 
         return obj;
@@ -74,7 +75,7 @@ router.get("/:idPokemon", async (req, res) => {
   var idNum = Number(idPokemon);
 
   try {
-    //Verifico si está dentro de los Pokemones originales, donde el id no es mayor a 2 cifras
+    //Verifico si está dentro de la BD, donde los Pokemones creados tiene ID mayor a 2 cifras
     if (idNum.length > 2) {
       var busqueda = await Pokemon.findOne({
         where: { id: idNum, include: Type },
@@ -82,7 +83,7 @@ router.get("/:idPokemon", async (req, res) => {
 
       res.send(busqueda);
     } else {
-      //Si se encuntra dentro de los Originales
+      //Si se encuentra dentro de los Originales
       var result = await fetch(`https://pokeapi.co/api/v2/pokemon/${idNum}`);
 
       var a = await result.json();
@@ -121,6 +122,7 @@ router.get("/:idPokemon", async (req, res) => {
     return res.status(404).send("No se encontro el Pokemon");
   }
 });
+
 //Ruta de Creación de Pokemones
 router.post("/", async (req, res) => {
   const { nombre, img, vida, fuerza, defensa, velocidad, altura, peso, types } =

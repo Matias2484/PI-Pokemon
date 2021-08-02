@@ -2,6 +2,7 @@
   background-image: url(../../img/Pokemon2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .form_Title {
   text-align: center;
@@ -22,6 +23,12 @@
   border-radius: 2rem;
   font-weight: bolder;
 }
+.formulario input {
+  margin-top: 10px;
+}
+.formulario label {
+  margin-right: 5px;
+}
 
 #btn_crear {
   margin-top: 2rem;
@@ -32,4 +39,7 @@
 }
 #btn_crear:hover {
   color: black;
+}
+.tipos_titulo {
+  margin-top: 1rem;
 }

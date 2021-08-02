@@ -1,9 +1,14 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 .card_Poke {
   display: grid;
   margin-top: 4rem;
   margin-left: 3rem;
   position: relative;
 }
+
 .card_Poke:hover {
   transition: 0.4s ease;
   transform: scale(1.03);
@@ -12,10 +17,14 @@
 .body_Poke {
   margin: 20px;
   width: 18rem;
-  background-color: grey;
+  background: linear-gradient(
+    90deg,
+    rgba(70, 70, 130, 1) 1%,
+    rgba(107, 122, 107, 1) 100%
+  );
   background-size: cover;
   border: 1px solid black;
-  border-radius: 2rem;
+  border-radius: 3rem;
   padding: 10px;
 }
 .img_Poke {
@@ -27,25 +36,13 @@
   margin: auto;
   border: 1px solid black;
   box-shadow: 5px 5px 25px #222 inset;
-  border-radius: 5px;
+  border-radius: 3rem;
   background-color: white;
 }
 .nombre_Poke {
   text-align: center;
   letter-spacing: 5px;
   margin-bottom: 5px;
-}
-.link_Poke {
-  text-decoration: none;
-  font-weight: bold;
-  color: rgb(85, 22, 22);
-  margin-left: 6.5rem;
-  margin-top: 2rem;
-}
-.link_Poke:hover {
-  background-color: rgb(26, 15, 15);
-  border-radius: 2px;
-  padding: 3px;
 }
 
 .tipos_Poke {
@@ -56,4 +53,5 @@
 .tipos_nombre {
   display: flex;
   justify-content: space-around;
+  margin-top: 7px;
 }

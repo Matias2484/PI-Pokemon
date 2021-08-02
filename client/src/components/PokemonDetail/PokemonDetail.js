@@ -17,24 +17,38 @@ export default function PokemonDetail() {
   }, [dispatch, id]);
 
   if (pokemonDetail.nombre) {
-    const tipos = pokemonDetail.types.map((e) => e);
-    var tiposPoke = tipos.map((e) => e.charAt(0).toUpperCase() + e.slice(1));
+    var tipos = pokemonDetail.types.map((e) => e);
+    // var tiposPoke = tipos.map((e) => e.charAt(0).toUpperCase() + e.slice(1));
   }
 
   if (pokemonDetail.nombre) {
     return (
       <div className="poke_Detail">
         <div className="detalles">
-          <p className="poke_Id">
-            ID: <span className="poke_Id_nro">{pokemonDetail.id}</span>
-          </p>
           <img
             className="poke_img"
             src={pokemonDetail.img}
             alt={pokemonDetail.nombre}
           ></img>
+          <div className="tipos">
+            <span className="">
+              {tipos === undefined || tipos === [] ? (
+                <h1>Cargando</h1>
+              ) : (
+                tipos.map((type) => (
+                  <div>
+                    <p>{type.charAt(0).toUpperCase() + type.slice(1)}</p>
+                  </div>
+                ))
+              )}
+            </span>
+          </div>
           <div class="container_stats">
+            <p className="poke_Id">
+              ID: <span className="poke_Id_nro">{pokemonDetail.id}</span>
+            </p>
             <p className="poke_nombre">{pokemonDetail.nombre.toUpperCase()}</p>
+
             <div className="poke_estadisticas">
               <p>Vida: {pokemonDetail.estadistica.vida}</p>
               <p>Fuerza: {pokemonDetail.estadistica.fuerza}</p>
@@ -42,9 +56,6 @@ export default function PokemonDetail() {
               <p>Velocidad: {pokemonDetail.estadistica.velocidad}</p>
               <p>Peso: {pokemonDetail.peso} kg</p>
               <p>Altura: {pokemonDetail.altura} m</p>
-              <div className="tipos">
-                Tipos: <span className="tipos_nombre">{tiposPoke}</span>
-              </div>
             </div>
           </div>
         </div>

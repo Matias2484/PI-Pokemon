@@ -132,6 +132,7 @@ export default function Form() {
               className={errors.nombre && "warning"}
               value={form.nombre}
               name="nombre"
+              placeholder="Nombre de tu Pokemon"
               onChange={handleChange}
             />
             {errors.nombre && <p className="warning">{errors.nombre}</p>}
@@ -143,6 +144,7 @@ export default function Form() {
               className={errors.img && "warning"}
               value={form.img}
               name="img"
+              placeholder="URL de la imagen"
               onChange={handleChange}
             />
             {errors.nombre && <p className="warning">{errors.img}</p>}
@@ -154,6 +156,7 @@ export default function Form() {
               className={errors.vida && "warning"}
               value={form.vida}
               name="vida"
+              placeholder="Elige la vida de tu Pokemon"
               onChange={handleChange}
             />
             {errors.vida && <p className="warning">{errors.vida}</p>}
@@ -166,6 +169,7 @@ export default function Form() {
               className={errors.fuerza && "warning"}
               value={form.fuerza}
               name="fuerza"
+              placeholder="Número para la Fuerza"
               onChange={handleChange}
             />
             {errors.fuerza && <p className="warning">{errors.fuerza}</p>}
@@ -177,6 +181,7 @@ export default function Form() {
               className={errors.defensa && "warning"}
               value={form.defensa}
               name="defensa"
+              placeholder="Número para la Defensa"
               onChange={handleChange}
             />
             {errors.defensa && <p className="warning">{errors.defensa}</p>}
@@ -188,6 +193,7 @@ export default function Form() {
               className={errors.velocidad && "warning"}
               value={form.velocidad}
               name="velocidad"
+              placeholder="Número para la Velocidad"
               onChange={handleChange}
             />
             {errors.velocidad && <p className="warning">{errors.velocidad}</p>}
@@ -199,6 +205,7 @@ export default function Form() {
               className={errors.peso && "warning"}
               value={form.peso}
               name="peso"
+              placeholder="Número para el Peso"
               onChange={handleChange}
             />
             {errors.peso && <p className="warning">{errors.peso}</p>}
@@ -210,17 +217,21 @@ export default function Form() {
               className={errors.altura && "warning"}
               value={form.altura}
               name="altura"
+              placeholder="Número para la Altura"
               onChange={handleChange}
             />
             {errors.altura && <p className="warning">{errors.altura}</p>}
           </div>
-          <div onChange={handleType} value={form.types}>
-            {allTypes.map((e) => (
-              <div>
-                <input value={e} type="checkbox" />
-                {e}
-              </div>
-            ))}
+          <div className="tipos_titulo">
+            <label>De qué tipo será tu Pokemon</label>
+            <div onChange={handleType} value={form.types}>
+              {allTypes.map((e) => (
+                <div>
+                  <input value={e} type="checkbox" />
+                  {e}
+                </div>
+              ))}
+            </div>
           </div>
           <button id="btn_crear" onClick={handleSubmit}>
             Crear

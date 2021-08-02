@@ -8,24 +8,30 @@ export default function PokemonSearched() {
     return (
       <div className="poke_Detail">
         <div className="detalles">
-          <p className="poke_Id">Id: {pokemonSearched.id}</p>
-          <p className="poke_nombre">{pokemonSearched.nombre.toUpperCase()}</p>
           <img
             className="poke_img"
             src={pokemonSearched.imagen}
             alt={pokemonSearched.nombre}
           ></img>
-          <div className="poke_estadisticas">
-            <p>Vida: {pokemonSearched.hp}</p>
-            <p>Ataque: {pokemonSearched.ataque}</p>
-            <p>Defensa: {pokemonSearched.defensa}</p>
-            <p>Velocidad: {pokemonSearched.velocidad}</p>
+          <div className="tipos">
+            <span className="tipos_nombre">
+              {pokemonSearched.types.map(
+                (e) =>
+                  e.type.name.charAt(0).toUpperCase() + e.type.name.slice(1)
+              )}
+            </span>
           </div>
-          <div className="tipos_Poke">
-            Tipos:
-            {pokemonSearched.types.map(
-              (e) => e.type.name.charAt(0).toUpperCase() + e.type.name.slice(1)
-            )}
+          <div className="container_stats">
+            <p className="poke_Id">ID: {pokemonSearched.id}</p>
+            <p className="poke_nombre">
+              {pokemonSearched.nombre.toUpperCase()}
+            </p>
+            <div className="poke_estadisticas">
+              <p>Vida: {pokemonSearched.hp}</p>
+              <p>Ataque: {pokemonSearched.ataque}</p>
+              <p>Defensa: {pokemonSearched.defensa}</p>
+              <p>Velocidad: {pokemonSearched.velocidad}</p>
+            </div>
           </div>
         </div>
       </div>

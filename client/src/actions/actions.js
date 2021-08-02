@@ -6,6 +6,7 @@ export const GET_POKEMON_DETAIL = "GET_POKEMON_DETAIL";
 export const FILTER_POKEMONS = "FILTER_POKEMONS";
 export const GET_TYPES = "GET_TYPES";
 export const RESTAURAR = "RESTAURAR";
+
 //Obtener todos los pokemones del Back
 export const getPokemons = () => {
   return function (dispatch) {
@@ -23,6 +24,7 @@ export const getPokemons = () => {
       });
   };
 };
+
 //Obtener el Pokemon por nombre
 export const getPokemonByName = (name) => {
   return function (dispatch) {
@@ -40,6 +42,7 @@ export const getPokemonByName = (name) => {
       });
   };
 };
+
 //Obtener el detalle del Pokemon por ID
 export const getPokemonDetail = (id) => {
   return function (dispatch) {
@@ -53,6 +56,7 @@ export const getPokemonDetail = (id) => {
       });
   };
 };
+
 //Filtrar los Pokemones por Tipo
 export const filterPokemons = (type) => {
   return {
@@ -60,6 +64,7 @@ export const filterPokemons = (type) => {
     payload: type,
   };
 };
+
 //Obtener los Tipos
 export const getTypes = () => {
   return function (dispatch) {
@@ -76,8 +81,9 @@ export const getTypes = () => {
       });
   };
 };
-export const restaurar = () => {
-  return {
-    type: restaurar,
-  };
-};
+
+// export const restaurar = () => {
+//   return {
+//     type: restaurar,
+//   };
+// };

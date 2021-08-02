@@ -36,10 +36,10 @@ export default function Home() {
     setState({ ...state, [e.target.id]: e.target.value });
   };
   if (state.select === "originales") {
-    pokemonsIniciales = allPokemons.filter((e) => !e.id);
+    pokemonsIniciales = allPokemons.filter((e) => e.id < 41);
   }
   if (state.select === "bd") {
-    pokemonsIniciales = allPokemons.filter((e) => e.id);
+    pokemonsIniciales = allPokemons.filter((e) => e.id.length > 2);
   }
 
   //Ordenado
@@ -102,7 +102,7 @@ export default function Home() {
               key={index + 1}
               nombre={e.nombre}
               img={e.img}
-              id={index + 1}
+              id={e.id}
               tipos={e.types.map((type) => (
                 <div>
                   <p>
@@ -123,7 +123,7 @@ export default function Home() {
           <div className="botonesPaginadoOrdenado">
             {/* Ordenar por Nombre y Fuerza */}
 
-            <div className="select">
+            <div className="ordenado">
               <select id="select" onChange={selectOptionOrder}>
                 <option defaultValue>Ordenar por... </option>
                 <option id="A-Z" value="A-Z">
@@ -134,37 +134,42 @@ export default function Home() {
                 <option value="Debil">Mas Debil</option>
               </select>
             </div>
+
+            {/* Filtar por Pokemones Originales o BD */}
+            <div className="filtradoBD">
+              <select id="select" onChange={filterBD}>
+                <option defaultValue>Filtrar por... </option>
+                <option id="originales" value="originales">
+                  Originales
+                </option>
+                <option id="bd" value="bd">
+                  Base de Datos
+                </option>
+              </select>
+            </div>
+
             {/* Paginado */}
-            {currentPage > 0 ? (
-              <button className="botonPrev" onClick={prevPage}>
-                Prev Page
-              </button>
-            ) : null}
-            {currentPage < 36 ? (
-              <button className="botonNext" onClick={nextPage}>
-                Next Page
-              </button>
-            ) : null}
+            <div className="paginado">
+              {currentPage > 0 ? (
+                <button className="botonPrev" onClick={prevPage}>
+                  Prev Page
+                </button>
+              ) : null}
+              {currentPage < 36 ? (
+                <button className="botonNext" onClick={nextPage}>
+                  Next Page
+                </button>
+              ) : null}
+            </div>
           </div>
-          {/* Filtar por Pokemones Originales o BD */}
-          <div className="select">
-            <select id="select" onChange={filterBD}>
-              <option defaultValue>Filtrar por... </option>
-              <option id="originales" value="originales">
-                Pokemones Originales
-              </option>
-              <option id="bd" value="bd">
-                bd
-              </option>
-            </select>
-          </div>
+
           <div className="pokemons">
             {pokemonsIniciales.map((e, index) => (
               <Pokemon
                 key={index + 1}
                 nombre={e.nombre}
                 img={e.img}
-                id={index + 1}
+                id={e.id}
                 tipos={
                   e.types === undefined || e.types === [] ? (
                     <h1>Cargando</h1>

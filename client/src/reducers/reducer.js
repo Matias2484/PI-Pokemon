@@ -41,6 +41,7 @@ function rootReducer(state = initialState, action) {
     case FILTER_POKEMONS:
       return {
         ...state,
+        //Filtrar los Pokemones por tipo
         pokemonFilter: state.allPokemons.filter((poke) => {
           return poke.types.some((t) => t.name === action.payload);
         }),

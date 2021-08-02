@@ -16,7 +16,7 @@ export default function PokemonCreated() {
   }, [dispatch]);
   useEffect(() => {
     if (allPokemons.length > 0) {
-      setPokemonCreado(allPokemons.filter((e) => e.id));
+      setPokemonCreado(allPokemons.filter((e) => e.id.length > 2));
     }
   }, [allPokemons]);
 
@@ -37,8 +37,17 @@ export default function PokemonCreated() {
               <p className="tipos_Poke">
                 Tipos:
                 <span className="nombre_tipos">
-                  {poke.types.map(
-                    (e) => e.name.charAt(0).toUpperCase() + e.name.slice(1)
+                  {poke.types === undefined || poke.types === [] ? (
+                    <h1>Cargando</h1>
+                  ) : (
+                    poke.types.map((type) => (
+                      <div>
+                        <p>
+                          {type.name.charAt(0).toUpperCase() +
+                            type.name.slice(1)}
+                        </p>
+                      </div>
+                    ))
                   )}
                 </span>
               </p>

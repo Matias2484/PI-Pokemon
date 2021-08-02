@@ -10,17 +10,14 @@ export default function Pokemon({ nombre, img, tipos, id }) {
           <h2 className="nombre_Poke">{nombre.toUpperCase()}</h2>
         </div>
         <div>
-          <img className="img_Poke" src={img} alt={nombre}></img>
+          <Link to={`/home/pokemon/${id}`}>
+            <img className="img_Poke" src={img} alt={nombre}></img>
+          </Link>
         </div>
         <div>
           <p className="tipos_Poke">
             Tipos: <span className="tipos_nombre">{tipos}</span>
           </p>
-        </div>
-        <div>
-          <Link className="link_Poke" to={`/home/pokemon/${id}`}>
-            Detalle
-          </Link>
         </div>
       </div>
     </div>
