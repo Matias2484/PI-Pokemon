@@ -223,7 +223,7 @@ export default function Form() {
             {errors.altura && <p className="warning">{errors.altura}</p>}
           </div>
           <div className="tipos_titulo">
-            <label>De qué tipo será tu Pokemon</label>
+            <span>De qué tipo será tu Pokemon</span>
             <div onChange={handleType} value={form.types}>
               {allTypes.map((e) => (
                 <div>
